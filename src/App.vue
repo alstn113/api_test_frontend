@@ -1,7 +1,9 @@
 <template>
   <div>
     <div id="nav">
-      <router-link to="/">Home</router-link> | <router-link to="/about">About</router-link> | <router-link to="/search">Search</router-link>
+      <router-link to="/">Home</router-link> | <router-link :to="{ name: 'About', params: { id: 3 } }">About</router-link> |
+      <router-link to="/search">Search</router-link> | <router-link to="/openapi">OpenApi</router-link> |
+      <router-link :to="{ name: 'StoreTest' }">StoreTest</router-link>
       <p><router-link to="/login">Login</router-link> | <router-link to="/register">Register</router-link></p>
       <p class="btn btn-primary" @click="logout()">logout</p>
     </div>

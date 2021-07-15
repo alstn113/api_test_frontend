@@ -7,7 +7,6 @@
 import Products from "../components/Product.vue";
 import { onMounted, reactive, ref } from "vue";
 import axios from "axios";
-
 export default {
   components: { Products },
   setup() {

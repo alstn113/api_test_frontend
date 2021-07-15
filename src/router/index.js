@@ -1,39 +1,46 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import About from "../views/About.vue";
-import Login from "../views/Login.vue";
-import Register from "../views/Register.vue";
-import Search from "../views/Search.vue";
 import VueCookies from "vue-cookies";
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: () => import("@/views/Home.vue"),
     meta: { unauthorized: true },
   },
   {
-    path: "/about",
+    path: "/about/:id",
     name: "About",
-    component: About,
+    component: () => import("@/views/About.vue"),
   },
   {
     path: "/login",
     name: "Login",
-    component: Login,
+    component: () => import("@/views/Login.vue"),
     meta: { unauthorized: true },
   },
   {
     path: "/register",
     name: "Register",
-    component: Register,
+    component: () => import("@/views/Register.vue"),
     meta: { unauthorized: true },
   },
   {
     path: "/search",
     name: "Search",
-    component: Search,
+    component: () => import("@/views/Search.vue"),
+    meta: { unauthorized: true },
+  },
+  {
+    path: "/openapi",
+    name: "OpenApi",
+    component: () => import("@/views/OpenApi.vue"),
+    meta: { unauthorized: true },
+  },
+  {
+    path: "/storeTest",
+    name: "StoreTest",
+    component: () => import("@/views/StoreTest.vue"),
     meta: { unauthorized: true },
   },
 ];

@@ -58,7 +58,7 @@ export default {
               .then(() => {
                 console.log("라우터 이동 전");
                 console.log("this.data1", this.data1, this.data1.first, this.data1.last);
-                this.$router.push({ path: "/about" });
+                this.$router.push({ name: "About", params: { id: 4 } });
               });
           }
         });

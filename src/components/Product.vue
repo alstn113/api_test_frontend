@@ -18,12 +18,12 @@
       <table class="table table-bordered align-middle text-center">
         <thead>
           <tr>
-            <th>아이디</th>
-            <th>제품명</th>
-            <th>제품가격</th>
-            <th>카테고리1</th>
-            <th>카테고리2</th>
-            <th>이미지</th>
+            <th width="10%">아이디</th>
+            <th width="20%">제품명</th>
+            <th width="20%">제품가격</th>
+            <th width="20%">카테고리1</th>
+            <th width="20%">카테고리2</th>
+            <th width="10%">이미지</th>
           </tr>
         </thead>
         <tbody>
@@ -37,9 +37,13 @@
           </tr>
         </tbody>
       </table>
-    </div>
-    <div class="d-flex justify-content-center my-5" v-if="filters.page < lastpage">
-      <button class="btn btn-primary" @click="loadMore()">Load More</button>
+      <div class="d-flex justify-content-center my-5" v-if="filters.page < lastpage">
+        <button class="btn btn-primary" @click="loadMore()">Load More</button>
+      </div>
+      <div v-else class="d-flex justify-content-center my-5">
+        목록의 마지막입니다.
+        <div @click="scrollToTop()">위로</div>
+      </div>
     </div>
   </div>
 </template>
@@ -54,15 +58,21 @@ export default {
       context.emit("set-filters", { ...props.filters, s, page: 1 });
     };
     const sort = (sort) => {
-      context.emit("set-filters", { ...props.filters, sort, page: 1 });
+      if (sort !== "Select") {
+        context.emit("set-filters", { ...props.filters, sort, page: 1 });
+      }
     };
     const loadMore = () => {
       context.emit("set-filters", { ...props.filters, page: props.filters.page + 1 });
+    };
+    const scrollToTop = () => {
+      window.scrollTo(0, 0);
     };
     return {
       search,
       sort,
       loadMore,
+      scrollToTop,
     };
   },
 };
